@@ -108,7 +108,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="imported_img\" />
+    <Folder Include="imported_proj\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="img\abrir proyecto.png" />
     <None Include="img\imagen.png" />

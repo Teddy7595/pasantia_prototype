@@ -7,32 +7,39 @@ namespace pasantia_prototype.process.base_class
     internal class FileDialogWin : IFileDialog
     { 
         private readonly OpenFileDialog _fileDialog;
+        private bool m_open;
 
         public FileDialogWin()
         { 
             this._fileDialog = new OpenFileDialog();
+            this.m_open = false;
         }
 
 
         public void close_dialog()
         {
-            throw new System.NotImplementedException();
+            this._fileDialog?.Dispose();
         }
 
         public object get_content()
-        {
-            throw new System.NotImplementedException();
-        }
+        { 
+            if (this.m_open)
+                return this._fileDialog.FileNames;
+            else 
+                return this._fileDialog.FileName;
+        }       
 
-        public object open_dialog()
+        public object open_dialog(bool multiSelect)
         {
+            this._fileDialog.Multiselect = multiSelect;
+            this.m_open = multiSelect;
             this._fileDialog.ShowDialog();
             return this._fileDialog;
         }
 
         public object _object()
         {
-            throw new System.NotImplementedException();
+            return this._fileDialog;
         }
 
         public object set_filter(enums.FileTypes type, string title)
@@ -40,12 +47,12 @@ namespace pasantia_prototype.process.base_class
             switch (type) 
             {
                 case FileTypes.images:
-                    this._fileDialog.Filter = "image | *.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                    this._fileDialog.Filter = "Image | *.jpg;*.jpeg;*.png;*.gif;*.bmp";
                     this._fileDialog.Title  = title;
                 break;
 
                 case FileTypes.files:
-                    this._fileDialog.Filter = "archivos | *.ted";
+                    this._fileDialog.Filter = "Archivos | *.ted";
                     this._fileDialog.Title  = title;
                 break;
 

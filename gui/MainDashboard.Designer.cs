@@ -56,6 +56,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
+            this.importarImagenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -101,7 +102,8 @@
             // 
             this.filesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirImagenToolStripMenuItem,
-            this.abrirProyectoToolStripMenuItem});
+            this.abrirProyectoToolStripMenuItem,
+            this.importarImagenesToolStripMenuItem});
             resources.ApplyResources(this.filesToolStripMenuItem, "filesToolStripMenuItem");
             this.filesToolStripMenuItem.Name = "filesToolStripMenuItem";
             // 
@@ -109,11 +111,13 @@
             // 
             this.abrirImagenToolStripMenuItem.Name = "abrirImagenToolStripMenuItem";
             resources.ApplyResources(this.abrirImagenToolStripMenuItem, "abrirImagenToolStripMenuItem");
+            this.abrirImagenToolStripMenuItem.Click += new System.EventHandler(this.abrirImagenToolStripMenuItem_Click);
             // 
             // abrirProyectoToolStripMenuItem
             // 
             this.abrirProyectoToolStripMenuItem.Name = "abrirProyectoToolStripMenuItem";
             resources.ApplyResources(this.abrirProyectoToolStripMenuItem, "abrirProyectoToolStripMenuItem");
+            this.abrirProyectoToolStripMenuItem.Click += new System.EventHandler(this.abrirProyectoToolStripMenuItem_Click);
             // 
             // imageToolStripMenuItem
             // 
@@ -246,6 +250,11 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
+            // importarImagenesToolStripMenuItem
+            // 
+            this.importarImagenesToolStripMenuItem.Name = "importarImagenesToolStripMenuItem";
+            resources.ApplyResources(this.importarImagenesToolStripMenuItem, "importarImagenesToolStripMenuItem");
+            // 
             // MainDashboard
             // 
             this.AllowDrop = true;
@@ -308,5 +317,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem importarImagenesToolStripMenuItem;
     }
 }

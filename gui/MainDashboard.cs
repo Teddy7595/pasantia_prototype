@@ -23,9 +23,6 @@ namespace pasantia_prototype.gui
             this.toolStripStatusLabel1.Text = "Ready";
             this.OnResizeLayout();
 
-            this._dialog.set_filter(process.enums.FileTypes.images, "Buscar imagenes para proyecto");
-            this._dialog.open_dialog();
-            
         }
 
         private void OnResizeLayout()
@@ -49,5 +46,30 @@ namespace pasantia_prototype.gui
         {
 
         }
+
+        private void abrirImagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this._dialog.set_filter(process.enums.FileTypes.images, "Buscar imagenes");
+            this._dialog.open_dialog(true);
+
+            Array result = (this._dialog.get_content() as  Array);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private void abrirProyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this._dialog.set_filter(process.enums.FileTypes.files, "Buscar proyecto");
+            this._dialog.open_dialog(false);
+
+            string result = (this._dialog.get_content() as string);
+
+            Console.WriteLine(result);
+        }
+
+
     }
 }

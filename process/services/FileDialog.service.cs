@@ -22,9 +22,9 @@ namespace pasantia_prototype.process.services
             return this._dialog.get_content();
         }
 
-        public object open_dialog()
+        public object open_dialog(bool multiSelect)
         {
-            return this._dialog.open_dialog();
+            return this._dialog.open_dialog(multiSelect);
         }
 
         public object _object()
