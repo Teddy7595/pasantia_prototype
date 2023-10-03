@@ -36,6 +36,7 @@
             this.filesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirProyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarImagenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarCamaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearProyectoConImagenCamaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,14 +50,16 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.importarImagenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -119,6 +122,12 @@
             resources.ApplyResources(this.abrirProyectoToolStripMenuItem, "abrirProyectoToolStripMenuItem");
             this.abrirProyectoToolStripMenuItem.Click += new System.EventHandler(this.abrirProyectoToolStripMenuItem_Click);
             // 
+            // importarImagenesToolStripMenuItem
+            // 
+            this.importarImagenesToolStripMenuItem.Name = "importarImagenesToolStripMenuItem";
+            resources.ApplyResources(this.importarImagenesToolStripMenuItem, "importarImagenesToolStripMenuItem");
+            this.importarImagenesToolStripMenuItem.Click += new System.EventHandler(this.importarImagenesToolStripMenuItem_Click);
+            // 
             // imageToolStripMenuItem
             // 
             this.imageToolStripMenuItem.Checked = true;
@@ -178,6 +187,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
@@ -199,9 +209,19 @@
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+            this.tableLayoutPanel4.Controls.Add(this.listBox2, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.Silver;
+            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.listBox2, "listBox2");
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Name = "listBox2";
             // 
             // label2
             // 
@@ -221,6 +241,7 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.listBox1, 0, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // label1
@@ -229,6 +250,14 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.Silver;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.listBox1, "listBox1");
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Name = "listBox1";
             // 
             // panel3
             // 
@@ -240,8 +269,17 @@
             // tableLayoutPanel5
             // 
             resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.listBox3, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.Silver;
+            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.listBox3, "listBox3");
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Name = "listBox3";
             // 
             // label3
             // 
@@ -249,11 +287,6 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
-            // 
-            // importarImagenesToolStripMenuItem
-            // 
-            this.importarImagenesToolStripMenuItem.Name = "importarImagenesToolStripMenuItem";
-            resources.ApplyResources(this.importarImagenesToolStripMenuItem, "importarImagenesToolStripMenuItem");
             // 
             // MainDashboard
             // 
@@ -318,5 +351,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem importarImagenesToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }

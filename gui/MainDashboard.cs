@@ -1,33 +1,58 @@
 ﻿using System;
 using System.Windows.Forms;
-using pasantia_prototype.process.base_class;
 using pasantia_prototype.process.interfaces;
 using pasantia_prototype.process.services;
+using System.Collections.Generic;
+
+using pasantia_prototype.process.base_class;
+using pasantia_prototype.process.types;
+using System.Linq;
 
 namespace pasantia_prototype.gui
 {
     public partial class MainDashboard : Form
     {
-        private Form main_windows;
-        private IFileDialog _dialog;
+        private Form            main_windows;
+        private IFileDialog     _dialog;
+        private IListViewer[]   _listBox;
+        private int i = 0;
         public MainDashboard(Form main_windows)
         {
             InitializeComponent();
-            this._dialog = new FileDialogServ();
-
+            this._dialog   = new FileDialogServ();
             this.Text            = $"Bienvenido {Environment.UserName}";
             this.StartPosition   = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.WindowState     = FormWindowState.Maximized;
             this.main_windows    = main_windows;
             this.toolStripStatusLabel1.Text = "Ready";
-            this.OnResizeLayout();
 
-        }
+            this.tableLayoutPanel3.Controls.OfType<ListBox>()
+                .ToList()
+                .ForEach(x => 
+                {
+                    Console.WriteLine(x.Name);
+                    //this._listBox[i] = new ListViewerServ();
+                    //this._listBox[i].set_container(x);
+                });
 
-        private void OnResizeLayout()
-        {
-            
+            this.tableLayoutPanel4.Controls.OfType<ListBox>()
+                .ToList()
+                .ForEach(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    //this._listBox[i] = new ListViewerServ();
+                    //this._listBox[i].set_container(x);
+                });
+
+            this.tableLayoutPanel5.Controls.OfType<ListBox>()
+                .ToList()
+                .ForEach(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    //this._listBox[i] = new ListViewerServ();
+                    //this._listBox[i].set_container(x);
+                });
         }
 
         protected override void OnResize(EventArgs e)
@@ -50,14 +75,11 @@ namespace pasantia_prototype.gui
         private void abrirImagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this._dialog.set_filter(process.enums.FileTypes.images, "Buscar imagenes");
-            this._dialog.open_dialog(true);
+            this._dialog.open_dialog(false);
 
-            Array result = (this._dialog.get_content() as  Array);
+            string result = (this._dialog.get_content() as string);
 
-            foreach (var item in result)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine(result);
         }
 
         private void abrirProyectoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,6 +92,17 @@ namespace pasantia_prototype.gui
             Console.WriteLine(result);
         }
 
+        private void importarImagenesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this._dialog.set_filter(process.enums.FileTypes.images, "Buscar imagenes");
+            this._dialog.open_dialog(true);
 
+            Array result = (this._dialog.get_content() as Array);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }

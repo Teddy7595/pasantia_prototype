@@ -70,11 +70,22 @@
     <Compile Include="process\base_class\FileDialog.win.cs" />
     <Compile Include="process\base_class\FileHandler.win.cs" />
     <Compile Include="process\base_class\ImageViewer.win.cs" />
+    <Compile Include="process\base_class\ItemList.win.cs" />
+    <Compile Include="process\base_class\ListViewer.win.cs" />
+    <Compile Include="process\base_class\MessageBox.win.cs" />
+    <Compile Include="process\base_class\Serialization.service.cs" />
     <Compile Include="process\enums\FileTypes.enum.cs" />
+    <Compile Include="process\enums\TextTypes.enum.cs" />
     <Compile Include="process\interfaces\FileDialog.interface.cs" />
+    <Compile Include="process\interfaces\FileHanlder.interface.cs" />
     <Compile Include="process\interfaces\ImageViewer.interface.cs" />
+    <Compile Include="process\interfaces\ItemList.interface.cs" />
+    <Compile Include="process\interfaces\ListViewer.interface.cs" />
     <Compile Include="process\services\FileDialog.service.cs" />
     <Compile Include="process\services\ImageViewer.service.cs" />
+    <Compile Include="process\services\ListViewer.service.cs" />
+    <Compile Include="process\types\Actions.type.cs" />
+    <Compile Include="process\types\TextStyle.type.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\MainDashboard.resx">
@@ -90,6 +101,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
