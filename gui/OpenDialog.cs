@@ -1,16 +1,26 @@
-﻿using pasantia_prototype.gui;
+﻿using pasantia_prototype.process.services;
+using pasantia_prototype.gui;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using pasantia_prototype.process.interfaces;
 
 namespace pasantia_prototype
 {
     public partial class OpenDialog : Form
     {
-        static System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+        private static System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+        private object[] _initComponents;
+        private int _components;
+
         public OpenDialog()
         {
             InitializeComponent();
+            this._components = 0;
+            this._initComponents = new object[]
+            {
+                FileHandlerServ.get_instance(),
+            };
+
             this.label2.Text = null;
         }
 
@@ -21,7 +31,7 @@ namespace pasantia_prototype
             this.progressBar1.Minimum   = 0;
             this.progressBar1.Value     = 0;
 
-            Timer.Interval = 100;
+            Timer.Interval = 25;
             Timer.Tick += new System.EventHandler(Timer_Tick);
             Timer.Start();
         }
@@ -33,8 +43,21 @@ namespace pasantia_prototype
 
             if (this.progressBar1.Value < 100)
             {
-                this.progressBar1.Value += 5;
                 this.label2.Text = TEXT.ToString();
+
+                if (this._initComponents.Length > this.progressBar1.Value)
+                {
+                    if (this._components == 0)
+                    {
+                        ((IFileHanlder)this._initComponents[this._components]).verify_dirs();
+                        ((IFileHanlder)this._initComponents[this._components]).verify_files();
+                    }
+
+                    this._components += 1;
+                }
+
+                this.progressBar1.Value += 1;
+
             }
             else
             {

@@ -2,7 +2,8 @@
 {
     public interface IFileHanlder
     {
-        object verify_dirs();
+        void verify_dirs();
+        void verify_files();
         string base_dir();
         object list_files(string folder);
         object list_files(string folder, object exception);

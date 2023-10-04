@@ -6,7 +6,7 @@ namespace pasantia_prototype.process.services
 {
     internal class FileHandlerServ : IFileHanlder
     {
-        private readonly IFileHanlder _fileHandler;
+        private static readonly IFileHanlder _fileHandler = FileHandlerWin.get_instance();
 
         FileHandlerServ()
         {
@@ -15,17 +15,22 @@ namespace pasantia_prototype.process.services
 
         public static object get_instance()
         {
-            return FileHandlerWin.get_instance();
+            return _fileHandler;
         }
 
         public string base_dir()
         {
-            return this._fileHandler.base_dir();
+            return _fileHandler.base_dir();
         }
 
-        public object verify_dirs()
+        public void verify_dirs()
         {
-            return this._fileHandler.verify_dirs();
+            _fileHandler.verify_dirs();
+        }
+
+        public void verify_files()
+        {
+            _fileHandler.verify_files();
         }
 
         public object copy_file(string path, string newPath)
