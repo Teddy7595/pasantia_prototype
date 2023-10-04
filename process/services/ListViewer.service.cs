@@ -8,9 +8,10 @@ namespace pasantia_prototype.process.services
     {
         private readonly IListViewer _listViewer;
             
-        public ListViewerServ()
+        public ListViewerServ(object listBox)
         {
-            this._listViewer = new ListViewerWin();
+            this._listViewer = new ListViewerWin(listBox);
+            Console.WriteLine("se instancio elemento");
         }
 
         public object set_container(object container)

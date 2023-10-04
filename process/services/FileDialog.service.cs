@@ -5,7 +5,7 @@ namespace pasantia_prototype.process.services
 {
     internal class FileDialogServ : IFileDialog
     {
-        private readonly FileDialogWin _dialog;
+        private readonly IFileDialog _dialog;
 
         public FileDialogServ()
         {

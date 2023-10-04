@@ -1,5 +1,4 @@
 ﻿using pasantia_prototype.process.interfaces;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System;
 
@@ -7,13 +6,11 @@ namespace pasantia_prototype.process.base_class
 {
     internal class ListViewerWin : IListViewer
     {
-        private readonly List<object> _list;
         private ListBox _listBox;
 
-        public ListViewerWin()
+        public ListViewerWin(object listBox)
         {
-            this._list      = new List<object>();
-            this._listBox   = new ListBox();
+            this._listBox   = (ListBox) listBox;
         }
 
         public object set_container(object container)

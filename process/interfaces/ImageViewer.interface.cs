@@ -2,7 +2,7 @@
 
 namespace pasantia_prototype.process.interfaces
 {
-    interface IImageViewer
+    public interface IImageViewer
     {
         object _size { get; set; }
         object get_object();

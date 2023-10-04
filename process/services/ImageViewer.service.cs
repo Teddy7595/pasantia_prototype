@@ -6,7 +6,7 @@ namespace pasantia_prototype.process.services
 {
     internal class ImageViewerServ : IImageViewer
     {
-        private readonly ImageViewerWin _imageViewer;
+        private readonly IImageViewer _imageViewer;
         public object _size { get; set; }
 
         public ImageViewerServ()

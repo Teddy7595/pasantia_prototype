@@ -2,7 +2,7 @@
 
 namespace pasantia_prototype.process.interfaces
 {
-    interface IItemList
+    public interface IItemList
     {
         object get_object();
         void build();

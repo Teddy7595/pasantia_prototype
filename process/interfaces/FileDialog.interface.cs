@@ -2,7 +2,7 @@
 
 namespace pasantia_prototype.process.interfaces
 {
-    interface IFileDialog
+    public interface IFileDialog
     {
         Object _object();
         Object open_dialog(bool multiSelect);

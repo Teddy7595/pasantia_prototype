@@ -1,14 +1,38 @@
 ﻿using pasantia_prototype.process.interfaces;
-using System;
 using System.IO;
+using System;
 
 namespace pasantia_prototype.process.base_class
 {
     internal class FileHandlerWin : IFileHanlder
     {
-        public FileHandlerWin() 
+        private static FileHandlerWin _fileHandlerWin;
+        public string[] _paths { get; set;}
+
+        FileHandlerWin() 
         { 
-            
+
+        }
+
+        public static FileHandlerWin get_instance()
+        {
+            if (_fileHandlerWin == null)
+            {
+                _fileHandlerWin = new FileHandlerWin();
+            }
+             
+            return _fileHandlerWin; 
+        }
+
+        public object verify_dirs()
+        {
+
+            throw new NotImplementedException();
+        }
+
+        public string base_dir()
+        {
+            return Environment.CurrentDirectory;
         }
 
         public object copy_file(string path, string newPath)

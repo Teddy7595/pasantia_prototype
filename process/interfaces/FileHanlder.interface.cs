@@ -1,7 +1,9 @@
 ﻿namespace pasantia_prototype.process.interfaces
 {
-    interface IFileHanlder
+    public interface IFileHanlder
     {
+        object verify_dirs();
+        string base_dir();
         object list_files(string folder);
         object list_files(string folder, object exception);
         object open_file(string path);

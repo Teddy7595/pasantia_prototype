@@ -1,25 +1,30 @@
 ﻿using System;
-using System.Windows.Forms;
-using pasantia_prototype.process.interfaces;
-using pasantia_prototype.process.services;
-using System.Collections.Generic;
-
-using pasantia_prototype.process.base_class;
-using pasantia_prototype.process.types;
 using System.Linq;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using pasantia_prototype.process.services;
+using pasantia_prototype.process.interfaces;
 
 namespace pasantia_prototype.gui
 {
+    public struct ListViewer
+    {
+        public IListViewer list;
+        public string name;
+    }
+
     public partial class MainDashboard : Form
     {
-        private Form            main_windows;
-        private IFileDialog     _dialog;
-        private IListViewer[]   _listBox;
-        private int i = 0;
+        private Form             main_windows;
+        private IFileDialog      _dialog;
+        private List<ListViewer> _list_viewers;
+        private IFileHanlder     _fileHandler;
         public MainDashboard(Form main_windows)
         {
             InitializeComponent();
-            this._dialog   = new FileDialogServ();
+            this._list_viewers   = new List<ListViewer>();
+            this._fileHandler    = (IFileHanlder) FileHandlerServ.get_instance();
+            this._dialog         = new FileDialogServ();
             this.Text            = $"Bienvenido {Environment.UserName}";
             this.StartPosition   = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -27,32 +32,18 @@ namespace pasantia_prototype.gui
             this.main_windows    = main_windows;
             this.toolStripStatusLabel1.Text = "Ready";
 
-            this.tableLayoutPanel3.Controls.OfType<ListBox>()
+            this.tableLayoutPanel1.Controls.OfType<ListBox>()
                 .ToList()
-                .ForEach(x => 
+                .ForEach((item) =>
                 {
-                    Console.WriteLine(x.Name);
-                    //this._listBox[i] = new ListViewerServ();
-                    //this._listBox[i].set_container(x);
+                    this._list_viewers.Add(new ListViewer()
+                    {
+                        list = new ListViewerServ(item),
+                        name = item.Name
+                    });
                 });
-
-            this.tableLayoutPanel4.Controls.OfType<ListBox>()
-                .ToList()
-                .ForEach(x =>
-                {
-                    Console.WriteLine(x.Name);
-                    //this._listBox[i] = new ListViewerServ();
-                    //this._listBox[i].set_container(x);
-                });
-
-            this.tableLayoutPanel5.Controls.OfType<ListBox>()
-                .ToList()
-                .ForEach(x =>
-                {
-                    Console.WriteLine(x.Name);
-                    //this._listBox[i] = new ListViewerServ();
-                    //this._listBox[i].set_container(x);
-                });
+            
+            Console.WriteLine(this._fileHandler.base_dir());
         }
 
         protected override void OnResize(EventArgs e)

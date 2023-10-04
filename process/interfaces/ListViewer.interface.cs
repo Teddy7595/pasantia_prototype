@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace pasantia_prototype.process.interfaces
 {
-    interface IListViewer
+    public interface IListViewer
     {
         object set_container(object container);
         object set_elements(object[] elements);
+
 
     }
 }

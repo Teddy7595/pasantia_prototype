@@ -82,6 +82,7 @@
     <Compile Include="process\interfaces\ItemList.interface.cs" />
     <Compile Include="process\interfaces\ListViewer.interface.cs" />
     <Compile Include="process\services\FileDialog.service.cs" />
+    <Compile Include="process\services\FileHandler.service.cs" />
     <Compile Include="process\services\ImageViewer.service.cs" />
     <Compile Include="process\services\ListViewer.service.cs" />
     <Compile Include="process\types\Actions.type.cs" />
