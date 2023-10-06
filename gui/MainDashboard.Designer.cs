@@ -47,12 +47,12 @@
             this.actualizarLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.listView3 = new System.Windows.Forms.ListView();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -68,8 +68,8 @@
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // toolStripProgressBar1
@@ -175,22 +175,13 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.listBox2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listView2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listView3, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // listBox2
-            // 
-            resources.ApplyResources(this.listBox2, "listBox2");
-            this.listBox2.BackColor = System.Drawing.Color.LightGray;
-            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Name = "listBox2";
-            this.tableLayoutPanel1.SetRowSpan(this.listBox2, 3);
             // 
             // label2
             // 
@@ -216,21 +207,31 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
-            // listBox1
+            // listView1
             // 
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.BackColor = System.Drawing.Color.LightGray;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Name = "listBox1";
+            this.listView1.BackColor = System.Drawing.SystemColors.MenuBar;
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.HideSelection = false;
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // listBox3
+            // listView2
             // 
-            resources.ApplyResources(this.listBox3, "listBox3");
-            this.listBox3.BackColor = System.Drawing.Color.LightGray;
-            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Name = "listBox3";
+            this.listView2.BackColor = System.Drawing.SystemColors.MenuBar;
+            resources.ApplyResources(this.listView2, "listView2");
+            this.listView2.HideSelection = false;
+            this.listView2.Name = "listView2";
+            this.tableLayoutPanel1.SetRowSpan(this.listView2, 3);
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.listView3.CheckBoxes = true;
+            resources.ApplyResources(this.listView3, "listView3");
+            this.listView3.HideSelection = false;
+            this.listView3.Name = "listView3";
+            this.listView3.UseCompatibleStateImageBehavior = false;
             // 
             // MainDashboard
             // 
@@ -281,8 +282,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView3;
     }
 }

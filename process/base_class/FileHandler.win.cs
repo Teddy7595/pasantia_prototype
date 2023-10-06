@@ -1,4 +1,5 @@
 ﻿using pasantia_prototype.process.interfaces;
+using System.Security.AccessControl;
 using System.Linq;
 using System.IO;
 using System;
@@ -8,17 +9,17 @@ namespace pasantia_prototype.process.base_class
     internal class FileHandlerWin : IFileHanlder
     {
         private static FileHandlerWin _fileHandlerWin;
-        private readonly string _docfolderPath;
+        private string _docfolderPath;
         private string[] _paths { get; set; }
-        public  string[] _projPaths { get; set;}
-        public  string[] _imgPaths { get; set; }
-        public  string   _imgFolder { get; set; }
-        public  string   _prjFolder { get; set; }
+        private string[] _projPaths;
+        private string[] _imgPaths;
+        private string   _imgFolder;
+        private string   _prjFolder; 
 
         FileHandlerWin() 
         { 
 
-            this._docfolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            this._docfolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             this._imgFolder     = "img_visualizer";
             this._prjFolder     = "prj_visualizer";
 
@@ -26,6 +27,21 @@ namespace pasantia_prototype.process.base_class
                 $"{this._docfolderPath}\\{this._imgFolder}",
                 $"{this._docfolderPath}\\{this._prjFolder}"
             };
+        }
+
+        public void set_permissions()
+        {
+            DirectoryInfo dir1 = new DirectoryInfo(this._paths[0]);
+            DirectoryInfo dir2 = new DirectoryInfo(this._paths[1]);
+
+            DirectorySecurity dirSec1 = dir1.GetAccessControl(AccessControlSections.Access);
+            DirectorySecurity dirSec2 = dir2.GetAccessControl(AccessControlSections.Access);
+
+            dirSec1.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.ReadAndExecute, AccessControlType.Allow));
+            dirSec2.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.ReadAndExecute, AccessControlType.Allow));
+
+            dir1.SetAccessControl(dirSec1);
+            dir2.SetAccessControl(dirSec2);
         }
 
         public static FileHandlerWin get_instance()
@@ -61,11 +77,6 @@ namespace pasantia_prototype.process.base_class
                 if (Directory.Exists(path) && path.Contains(this._prjFolder))
                     this._projPaths = Directory.GetFiles(path);
             });
-
-            this._imgPaths.ToList().ForEach((path) =>
-            {
-                Console.WriteLine($"Imagenes: {path}");
-            });
         }
 
         public string base_dir()
@@ -77,6 +88,8 @@ namespace pasantia_prototype.process.base_class
         {
             try 
             {
+                //byte[] buffer = File.ReadAllBytes(path);
+                //File.WriteAllBytes(newPath, buffer);
                 File.Copy(path, newPath);
                 return "completed";
             }
@@ -127,42 +140,130 @@ namespace pasantia_prototype.process.base_class
 
         public object delete_file(string path)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.Delete(path);
+                return "completed";
+            }
+            catch (IOException e)
+            {
+                return $"No se pudo crear el archivo {e.Message}";
+            }
         }
 
         public object delete_file(string path, object exception)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.Delete(path);
+                return "completed";
+            }
+            catch (IOException e)
+            {
+                return $"No se pudo crear el archivo {e.Message}";
+            }
         }
 
-        public object list_files(string folder)
+        public object read_file(string path)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return File.ReadAllText(path);
+            }
+            catch (IOException e)
+            {
+                return null;
+            }
         }
 
-        public object list_files(string folder, object exception)
+        public object read_file(string path, object exception)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return File.ReadAllText(path);
+            }
+            catch (IOException e)
+            {
+                return null;
+            }
         }
 
-        public object move_file(string path, object content)
+        public object modify_file(string path, object content)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.WriteAllText(path, content.ToString());
+                return "completed";
+            }
+            catch (IOException e)
+            {
+                return $"No se pudo crear el archivo {e.Message}";
+            }
         }
 
-        public object move_file(string path, object content, object exception)
+        public object modify_file(string path, object content, object exception)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.WriteAllText(path, content.ToString());
+                return "completed";
+            }
+            catch (IOException e)
+            {
+                return $"No se pudo crear el archivo {e.Message}";
+            }
         }
 
-        public object open_file(string path)
+        public void set_prjFolder(string path)
         {
-            throw new NotImplementedException();
+            this._prjFolder = path;
         }
 
-        public object open_file(string path, object exception)
+        public void set_imgFolder(string path)
         {
-            throw new NotImplementedException();
+            this._imgFolder = path;
+        }
+
+        public string get_prjFolder()
+        {
+            return this._prjFolder;
+        }
+
+        public string get_imgFolder()
+        {
+            return this._imgFolder;
+        }
+
+        public string[] get_imgPaths()
+        {
+            return this._imgPaths;
+        }
+
+        public string[] get_prjPaths()
+        {
+            return this._projPaths;
+        }
+
+        public void set_baseFolder(string path)
+        {
+            this._docfolderPath = path;
+        }
+
+        public string get_baseFolder()
+        {
+            return this._docfolderPath;
+        }
+
+        public object get_fileInfo(string path)
+        {
+            try
+            {
+                return new FileInfo(path);
+            }
+            catch (IOException e)
+            {
+                return null;
+            }
         }
     }
 }

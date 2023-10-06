@@ -32,7 +32,7 @@ namespace pasantia_prototype.gui
             this.main_windows    = main_windows;
             this.toolStripStatusLabel1.Text = "Ready";
 
-            this.tableLayoutPanel1.Controls.OfType<ListBox>()
+            this.tableLayoutPanel1.Controls.OfType<ListView>()
                 .ToList()
                 .ForEach((item) =>
                 {
@@ -43,7 +43,7 @@ namespace pasantia_prototype.gui
                     });
                 });
             
-            Console.WriteLine(this._fileHandler.base_dir());
+            this.getSpecificElement("listView3", ref this._list_viewers ,this._fileHandler.get_imgPaths());
         }
 
         protected override void OnResize(EventArgs e)
@@ -89,11 +89,28 @@ namespace pasantia_prototype.gui
             this._dialog.open_dialog(true);
 
             Array result = (this._dialog.get_content() as Array);
+            //this._list_viewers.Where((item) => item.name == "listView3")
+            //    .ToList()
+            //    .ForEach((item) =>
+            //    {
+            //        item.list.set_listImg(result);
+            //    });
 
-            foreach (var item in result)
-            {
-                Console.WriteLine(item);
-            }
+            this.getSpecificElement("listView3", ref this._list_viewers, result);
+
+        }
+
+        private void getSpecificElement(string name, ref List<ListViewer> list, object data)
+        {
+            Console.WriteLine(name);
+            Console.WriteLine(data);
+
+            list.Where((item) => item.name == name)
+                .ToList()
+                .ForEach((item) =>
+                {
+                    item.list.set_listImg(data);
+                });
         }
     }
 }

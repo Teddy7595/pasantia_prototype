@@ -9,9 +9,9 @@ namespace pasantia_prototype.process.base_class
 {
     internal class ItemListWin : IItemList
     {
-        public  string       _id {get; set;}
-        private List<Label>  _labels;
-        private IImageViewer _image;
+        public  string           _id {get; set;}
+        private List<Label>      _labels;
+        private IImageViewer     _image;
         private TableLayoutPanel _item;
 
         public ItemListWin()

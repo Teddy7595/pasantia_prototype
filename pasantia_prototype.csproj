@@ -73,6 +73,7 @@
     <Compile Include="process\base_class\ItemList.win.cs" />
     <Compile Include="process\base_class\ListViewer.win.cs" />
     <Compile Include="process\base_class\MessageBox.win.cs" />
+    <Compile Include="process\base_class\Notifications.win.cs" />
     <Compile Include="process\base_class\Serialization.service.cs" />
     <Compile Include="process\enums\FileTypes.enum.cs" />
     <Compile Include="process\enums\TextTypes.enum.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="process\interfaces\ImageViewer.interface.cs" />
     <Compile Include="process\interfaces\ItemList.interface.cs" />
     <Compile Include="process\interfaces\ListViewer.interface.cs" />
+    <Compile Include="process\interfaces\Ntificactions.interface.cs" />
     <Compile Include="process\services\FileDialog.service.cs" />
     <Compile Include="process\services\FileHandler.service.cs" />
     <Compile Include="process\services\ImageViewer.service.cs" />

@@ -11,7 +11,6 @@ namespace pasantia_prototype.process.services
         public ListViewerServ(object listBox)
         {
             this._listViewer = new ListViewerWin(listBox);
-            Console.WriteLine("se instancio elemento");
         }
 
         public object set_container(object container)
@@ -19,9 +18,19 @@ namespace pasantia_prototype.process.services
             return this._listViewer.set_container(container);
         }
 
-        public object set_elements(object[] elements)
+        public object set_listImg(Array elements)
         {
-            return this._listViewer.set_elements(elements);
+            return this._listViewer.set_listImg(elements);
+        }
+
+        public object set_listImg(object element)
+        {
+            return this._listViewer.set_listImg(element);
+        }
+
+        public object set_listPrj(object[] elements)
+        {
+            return this._listViewer.set_listPrj(elements);
         }
     }
 }
