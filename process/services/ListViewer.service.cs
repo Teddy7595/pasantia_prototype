@@ -18,19 +18,14 @@ namespace pasantia_prototype.process.services
             return this._listViewer.set_container(container);
         }
 
-        public object set_listImg(Array elements)
+        public object set_listImg(Array element, object menuStrip)
         {
-            return this._listViewer.set_listImg(elements);
+            return this._listViewer.set_listImg(element, menuStrip);
         }
 
-        public object set_listImg(object element)
+        public object set_listPrj(Array elements, object menuStrip)
         {
-            return this._listViewer.set_listImg(element);
-        }
-
-        public object set_listPrj(object[] elements)
-        {
-            return this._listViewer.set_listPrj(elements);
+            return this._listViewer.set_listPrj(elements, menuStrip);
         }
     }
 }

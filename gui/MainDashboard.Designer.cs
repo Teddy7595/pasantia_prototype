@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDashboard));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -47,15 +48,18 @@
             this.actualizarLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
             this.listView3 = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -183,6 +187,15 @@
             this.tableLayoutPanel1.Controls.Add(this.listView3, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // listView2
+            // 
+            this.listView2.BackColor = System.Drawing.SystemColors.MenuBar;
+            resources.ApplyResources(this.listView2, "listView2");
+            this.listView2.HideSelection = false;
+            this.listView2.Name = "listView2";
+            this.tableLayoutPanel1.SetRowSpan(this.listView2, 3);
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
@@ -211,27 +224,39 @@
             // 
             this.listView1.BackColor = System.Drawing.SystemColors.MenuBar;
             resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
+            this.listView1.LabelEdit = true;
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
+            this.listView1.ShowItemToolTips = true;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.SystemColors.MenuBar;
-            resources.ApplyResources(this.listView2, "listView2");
-            this.listView2.HideSelection = false;
-            this.listView2.Name = "listView2";
-            this.tableLayoutPanel1.SetRowSpan(this.listView2, 3);
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // listView3
             // 
+            this.listView3.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView3.BackColor = System.Drawing.SystemColors.MenuBar;
             this.listView3.CheckBoxes = true;
             resources.ApplyResources(this.listView3, "listView3");
-            this.listView3.HideSelection = false;
+            this.listView3.HotTracking = true;
+            this.listView3.HoverSelection = true;
             this.listView3.Name = "listView3";
+            this.listView3.ShowItemToolTips = true;
             this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // MainDashboard
             // 
@@ -254,6 +279,7 @@
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +311,7 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

@@ -49,6 +49,7 @@ namespace pasantia_prototype
                 {
                     if (this._components == 0)
                     {
+                        ((IFileHanlder)this._initComponents[this._components]).set_permissions();
                         ((IFileHanlder)this._initComponents[this._components]).verify_dirs();
                         ((IFileHanlder)this._initComponents[this._components]).verify_files();
                     }
@@ -56,7 +57,7 @@ namespace pasantia_prototype
                     this._components += 1;
                 }
 
-                this.progressBar1.Value += 1;
+                this.progressBar1.Value += this._components;
 
             }
             else

@@ -15,10 +15,10 @@ namespace pasantia_prototype.gui
 
     public partial class MainDashboard : Form
     {
-        private Form             main_windows;
-        private IFileDialog      _dialog;
-        private List<ListViewer> _list_viewers;
-        private IFileHanlder     _fileHandler;
+        private readonly Form             main_windows;
+        private readonly IFileDialog      _dialog;
+        private readonly List<ListViewer> _list_viewers;
+        private readonly IFileHanlder     _fileHandler;
         public MainDashboard(Form main_windows)
         {
             InitializeComponent();
@@ -42,8 +42,10 @@ namespace pasantia_prototype.gui
                         name = item.Name
                     });
                 });
-            
-            this.getSpecificElement("listView3", ref this._list_viewers ,this._fileHandler.get_imgPaths());
+
+            this.setFileStackSpecificElement(this._fileHandler.get_prjPaths(), "listView1");
+            this.setImgStackSpecificElement(this._fileHandler.get_imgPaths(), "listView3");
+
         }
 
         protected override void OnResize(EventArgs e)
@@ -89,27 +91,28 @@ namespace pasantia_prototype.gui
             this._dialog.open_dialog(true);
 
             Array result = (this._dialog.get_content() as Array);
-            //this._list_viewers.Where((item) => item.name == "listView3")
-            //    .ToList()
-            //    .ForEach((item) =>
-            //    {
-            //        item.list.set_listImg(result);
-            //    });
-
-            this.getSpecificElement("listView3", ref this._list_viewers, result);
+            this.setImgStackSpecificElement(result, "listView3");
+            
 
         }
 
-        private void getSpecificElement(string name, ref List<ListViewer> list, object data)
+        private void setFileStackSpecificElement(Array data, string name)
         {
-            Console.WriteLine(name);
-            Console.WriteLine(data);
-
-            list.Where((item) => item.name == name)
+            this._list_viewers.Where((item) => item.name == name)
                 .ToList()
                 .ForEach((item) =>
                 {
-                    item.list.set_listImg(data);
+                    item.list.set_listPrj(data, this.contextMenuStrip1);
+                });
+        }
+
+        private void setImgStackSpecificElement(Array data, string name)
+        {
+            this._list_viewers.Where((item) => item.name == name)
+                .ToList()
+                .ForEach((item) =>
+                {
+                    item.list.set_listImg(data, this.contextMenuStrip1);
                 });
         }
     }

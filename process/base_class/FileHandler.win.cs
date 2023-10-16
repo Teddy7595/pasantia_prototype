@@ -16,7 +16,7 @@ namespace pasantia_prototype.process.base_class
         private string   _imgFolder;
         private string   _prjFolder; 
 
-        FileHandlerWin() 
+        private FileHandlerWin() 
         { 
 
             this._docfolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
